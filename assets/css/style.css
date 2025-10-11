@@ -358,27 +358,33 @@ body {
 }
 
 #map { touch-action: none; } /* Prevent accidental grabs */
-/* === Mobile: stack city lists one per line === */
-@media (max-width: 640px) {
-  /* applies to both România and UK lists */
-  .city-grid {
-    display: grid;                /* keep it flexible */
-    grid-template-columns: 1fr;   /* single column */
-    gap: .4rem;
-    list-style: disc inside;      /* bullets */
+/* --- Mobile fix: one city per line (RO + UK) --- */
+@media (max-width: 768px) {
+  /* Target the exact lists to win specificity */
+  #cityList,
+  #roCityList {
+    display: block !important;        /* cancel flex/grid/columns */
+    column-count: 1 !important;       /* in case columns were used */
+    list-style: disc inside !important;
     margin: .25rem 0 0;
     padding: 0;
   }
 
-  .city-grid li {
-    display: list-item;           /* ensure bullet shows */
-    white-space: normal;          /* allow wrapping */
+  #cityList li,
+  #roCityList li {
+    display: list-item !important;     /* undo inline/inline-block */
+    white-space: normal !important;    /* allow wrapping */
     line-height: 1.4;
+    margin: 0 0 .35rem;
   }
 
-  /* if your desktop style adds "•" separators, disable them on mobile */
-  .city-grid li::after {
+  /* kill any custom separators like "•" from pseudo-elements */
+  #cityList li::before,
+  #cityList li::after,
+  #roCityList li::before,
+  #roCityList li::after {
     content: none !important;
   }
 }
+
 
