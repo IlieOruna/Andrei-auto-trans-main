@@ -1,1 +1,3 @@
-User-agent: *\nAllow: /\nSitemap: https://example.com/sitemap.xml\n
+User-agent: *
+Allow: /
+Sitemap: https://andreiautotrans.com/sitemap.xml
