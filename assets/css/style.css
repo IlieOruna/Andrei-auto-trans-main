@@ -358,3 +358,27 @@ body {
 }
 
 #map { touch-action: none; } /* Prevent accidental grabs */
+/* === Mobile: stack city lists one per line === */
+@media (max-width: 640px) {
+  /* applies to both România and UK lists */
+  .city-grid {
+    display: grid;                /* keep it flexible */
+    grid-template-columns: 1fr;   /* single column */
+    gap: .4rem;
+    list-style: disc inside;      /* bullets */
+    margin: .25rem 0 0;
+    padding: 0;
+  }
+
+  .city-grid li {
+    display: list-item;           /* ensure bullet shows */
+    white-space: normal;          /* allow wrapping */
+    line-height: 1.4;
+  }
+
+  /* if your desktop style adds "•" separators, disable them on mobile */
+  .city-grid li::after {
+    content: none !important;
+  }
+}
+
