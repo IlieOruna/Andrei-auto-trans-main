@@ -358,3 +358,21 @@ body {
 }
 
 #map { touch-action: none; } /* Prevent accidental grabs */
+/* --- Mobile fix: display one city per line in Traseu lists --- */
+@media (max-width: 768px) {
+  .city-grid {
+    grid-template-columns: 1fr !important; /* single column layout */
+  }
+  .city-grid li {
+    display: list-item !important; /* show as bullet list */
+    white-space: normal !important;
+    line-height: 1.5;
+    margin: 0 0 .4rem;
+  }
+  .city-grid li::before {
+    content: "•" !important;
+    color: var(--blue);
+    left: 0;
+  }
+}
+
