@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://example.com/index.html</loc></url>
-  <url><loc>https://example.com/romania-uk.html</loc></url>
-  <url><loc>https://example.com/uk-romania.html</loc></url>
-  <url><loc>https://example.com/galerie.html</loc></url>
+  <url>
+    <loc>https://andreiautotrans.com/index.html</loc>
+  </url>
+  <url>
+    <loc>https://andreiautotrans.com/#romania-uk</loc>
+  </url>
+  <url>
+    <loc>https://andreiautotrans.com/#uk-romania</loc>
+  </url>
+  <url>
+    <loc>https://andreiautotrans.com/#europe-map</loc>
+  </url>
+  <url>
+    <loc>https://andreiautotrans.com/#contact</loc>
+  </url>
+  <url>
+    <loc>https://andreiautotrans.com/privacy.html</loc>
+  </url>
 </urlset>
