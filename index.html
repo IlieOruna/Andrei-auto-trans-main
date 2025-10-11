@@ -389,20 +389,6 @@
   <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
   <script>
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('.city-actions button').forEach(button => {
-    const list = button.closest('.route-card').querySelector('.city-grid');
-    list.setAttribute('data-collapsed', 'true'); // start collapsed
-    button.addEventListener('click', () => {
-      const collapsed = list.getAttribute('data-collapsed') === 'true';
-      list.setAttribute('data-collapsed', collapsed ? 'false' : 'true');
-      button.textContent = collapsed ? 'Arată mai puține' : 'Arată mai multe';
-    });
-  });
-});
-</script>
-
 
 </body>
 </html>
