@@ -53,40 +53,6 @@
   <link rel="stylesheet" href="assets/css/style.css" />
 
   <!-- Structured Data (Organization / MovingCompany) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MovingCompany",
-    "name": "Andrei Auto Trans",
-    "url": "https://andreiautotrans.com/",
-    "logo": "https://andreiautotrans.com/assets/icons/og-image.png",
-    "image": "https://andreiautotrans.com/assets/preview.jpg",
-    "slogan": "Transport România ↔ Marea Britanie – persoane, colete, mașini & mobilier",
-    "description": "Transport internațional door-to-door România–UK pentru persoane, colete, mașini și mobilier. Plecări săptămânale din nordul României, livrare în toată Marea Britanie.",
-    "telephone": "+40 757 283 580",
-    "areaServed": ["România","Marea Britanie","Europa"],
-    "sameAs": [
-      "https://www.facebook.com/andrei.autotrans.2/"
-    ]
-  }
-  </script>
-
-  <!-- Structured Data (Breadcrumbs for sections) -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"BreadcrumbList",
-    "itemListElement":[
-      {"@type":"ListItem","position":1,"name":"Acasă","item":"https://andreiautotrans.com/#home"},
-      {"@type":"ListItem","position":2,"name":"România → UK","item":"https://andreiautotrans.com/#romania-uk"},
-      {"@type":"ListItem","position":3,"name":"UK → România","item":"https://andreiautotrans.com/#uk-romania"},
-      {"@type":"ListItem","position":4,"name":"Europa","item":"https://andreiautotrans.com/#europe-map"},
-      {"@type":"ListItem","position":5,"name":"Contact","item":"https://andreiautotrans.com/#contact"}
-    ]
-  }
-  <!-- Structured Data (Organization / MovingCompany) -->
-<script type="application/ld+json"> …existing MovingCompany JSON… </script>
-
 <!-- Structured Data (Breadcrumbs for sections) -->
 <script type="application/ld+json"> …existing BreadcrumbList JSON… </script>
 
@@ -125,6 +91,73 @@
   gtag('config', 'G-SYF9CZBZPZ');
 </script>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MovingCompany",
+  "@id": "https://andreiautotrans.com/#company",
+  "name": "Andrei Auto Trans",
+  "url": "https://andreiautotrans.com/",
+  "logo": "https://andreiautotrans.com/assets/img/logo-aat.png",
+  "image": "https://andreiautotrans.com/assets/preview.jpg",
+  "description": "Andrei Auto Trans oferă transport persoane, colete, mașini și mobilier România ↔ Marea Britanie. Plecări săptămânale, prețuri corecte, echipă cu experiență, rezervări rapide pe WhatsApp.",
+  "slogan": "Transport rapid și sigur România – Marea Britanie",
+  "telephone": "+40 757 283 580",
+  "email": "andrei.autotrans@gmail.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Strada Ștefan cel Mare 15",
+    "addressLocality": "Târgu Neamț",
+    "postalCode": "615200",
+    "addressCountry": "RO"
+  },
+  "openingHours": ["Mo-Su 08:00-22:00"],
+  "areaServed": [
+    { "@type": "Country", "name": "România" },
+    { "@type": "Country", "name": "Regatul Unit" },
+    { "@type": "Country", "name": "Europa" }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/andrei.autotrans.2"
+  ],
+  "priceRange": "€€",
+  "serviceType": [
+    "Transport persoane România - Anglia",
+    "Transport colete România - Anglia",
+    "Transport mașini și mobilier"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Servicii Andrei Auto Trans",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Transport persoane România - UK",
+          "description": "Transport confortabil, door-to-door, România ↔ Marea Britanie."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Transport colete România - UK",
+          "description": "Livrare rapidă și sigură a coletelor între România și Anglia."
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Transport mașini & mobilier",
+          "description": "Transport auto și mobilier cu echipă specializată."
+        }
+      }
+    ]
+  }
+}
+</script>
 
 </head>
 <body>
