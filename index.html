@@ -4,6 +4,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="x-ua-compatible" content="ie=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
 
   <!-- ===================== PRIMARY SEO ===================== -->
   <title>Transport persoane și colete România ↔ UK | Andrei Auto Trans</title>
@@ -55,10 +56,6 @@
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
   <link rel="stylesheet" href="https://andreiautotrans.com/assets/css/style.css" />
 
-  <!-- ===================== SCRIPTS ===================== -->
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
-  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
-
   <!-- ===================== STRUCTURED DATA (JSON-LD) ===================== -->
   <script type="application/ld+json">
   {
@@ -78,7 +75,7 @@
         }
       },
       {
-        "@type": ["MovingCompany","LocalBusiness"],
+        "@type": ["MovingCompany", "LocalBusiness"],
         "@id": "https://andreiautotrans.com/#company",
         "name": "Andrei Auto Trans",
         "url": "https://andreiautotrans.com/",
@@ -98,9 +95,7 @@
         },
         "openingHoursSpecification": [{
           "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"
-          ],
+          "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
           "opens": "08:00",
           "closes": "22:00"
         }],
@@ -109,9 +104,7 @@
           { "@type": "Country", "name": "Regatul Unit" },
           { "@type": "Continent", "name": "Europa" }
         ],
-        "sameAs": [
-          "https://www.facebook.com/andrei.autotrans.2/"
-        ],
+        "sameAs": ["https://www.facebook.com/andrei.autotrans.2/"],
         "hasOfferCatalog": {
           "@type": "OfferCatalog",
           "name": "Servicii Andrei Auto Trans",
@@ -159,6 +152,11 @@
   }
   </script>
 
+  <!-- ===================== JAVASCRIPT (DEFERRED) ===================== -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+
   <!-- ===================== GOOGLE ANALYTICS (GA4) ===================== -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYF9CZBZPZ"></script>
   <script>
@@ -167,10 +165,7 @@
     gtag('js', new Date());
     gtag('config', 'G-SYF9CZBZPZ');
   </script>
-
 </head>
-
-
 <body>
 
   <!-- Top Bar -->
