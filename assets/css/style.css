@@ -762,3 +762,29 @@ footer a:hover {
   }
   .city-grid li{ margin: 0; }
 }
+/* === Video promo: centered + responsive === */
+.video-promo .container {
+  display: grid;
+  justify-items: center;      /* centers heading, text, and video */
+}
+
+.promo-video {
+  display: block;
+  width: 100%;
+  max-width: 960px;           /* nice desktop width */
+  aspect-ratio: 16 / 9;       /* keeps frame proportional */
+  height: auto;               /* fallback */
+  margin: 16px auto 32px;     /* center with spacing */
+  background: #000;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.15);
+  object-fit: cover;          /* poster/video fill nicely */
+}
+
+@media (max-width: 768px) {
+  .promo-video {
+    max-width: 100%;
+    margin: 12px auto 20px;
+    border-radius: 12px;
+  }
+}
