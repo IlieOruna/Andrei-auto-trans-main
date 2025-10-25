@@ -168,6 +168,7 @@ function initCityToggle(listId, buttonId) {
   const btn = document.getElementById(buttonId);
   if (!list || !btn) return;
 
+<<<<<<< HEAD
   // initial collapsed state
   let isCollapsed = list.getAttribute("data-collapsed") === "true";
 
@@ -191,6 +192,20 @@ function initCityToggle(listId, buttonId) {
 
   // initialize
   updateState();
+=======
+  const updateLabel = () => {
+    btn.textContent =
+      list.getAttribute("data-collapsed") === "true" ? "Arată mai multe" : "Arată mai puține";
+  };
+
+  btn.addEventListener("click", () => {
+    const collapsed = list.getAttribute("data-collapsed") !== "true";
+    list.setAttribute("data-collapsed", collapsed ? "true" : "false");
+    updateLabel();
+  });
+
+  updateLabel();
+>>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
 }
 
 function initCityFilter(listId, inputId) {
@@ -202,14 +217,18 @@ function initCityFilter(listId, inputId) {
   input.addEventListener("input", () => {
     const q = input.value.trim().toLowerCase();
     list.setAttribute("data-collapsed", "false");
+<<<<<<< HEAD
     list.style.maxHeight = "1000px";
     list.style.overflow = "visible";
+=======
+>>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
     items.forEach((li) => {
       li.style.display = li.textContent.toLowerCase().includes(q) ? "" : "none";
     });
   });
 }
 
+<<<<<<< HEAD
 /* === INIT on DOM Ready === */
 document.addEventListener("DOMContentLoaded", () => {
   initCityToggle("roCityList", "toggleRoCities");
@@ -219,6 +238,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // initCityFilter("cityList", "ukCitySearch");
 });
 
+=======
+>>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
 /* -----------------------------
    📱 Map Scroll Lock (Touch Protection)
 ----------------------------- */

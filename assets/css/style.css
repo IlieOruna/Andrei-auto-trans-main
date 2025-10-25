@@ -98,6 +98,7 @@ body {
 .nav-toggle span { display:block; height:2px; background:#111; margin:6px 0; }
 
 @media (max-width: 768px) {
+<<<<<<< HEAD
   .cta-center {
     text-align: center;
     padding: 1rem;
@@ -157,6 +158,16 @@ body {
 }
 
 
+=======
+  .logo-img { max-height: 58px; }
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    background: #fff; border-top: 1px solid var(--line);
+    box-shadow: 0 6px 12px rgba(0,0,0,.1);
+    transform: translateY(-10px); opacity: 0; pointer-events: none;
+    transition: all .3s ease;
+  }
+>>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
   .nav.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
   .nav ul { flex-direction: column; padding: 1rem; gap: .75rem; }
   .nav a { display: block; text-align: center; font-size: 1rem; }
@@ -384,7 +395,11 @@ body {
    Footer
    ========================================================= */
 .mini-footer {
+<<<<<<< HEAD
   background: #050505; border-top: 1px solid var(--line); padding: 10px 0;
+=======
+  background: #fff; border-top: 1px solid var(--line); padding: 10px 0;
+>>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
 }
 .mini-footer__inner {
   display: flex; align-items: center; justify-content: space-between;
@@ -426,6 +441,7 @@ body {
     left: 0;
   }
 }
+<<<<<<< HEAD
 /* ===============================
    CTA centered link (homepage)
    =============================== */
@@ -788,3 +804,6 @@ footer a:hover {
     border-radius: 12px;
   }
 }
+=======
+
+>>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
