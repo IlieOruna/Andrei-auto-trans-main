@@ -1,3 +1,4 @@
+// assets/js/main.js
 /**
  * =========================================================
  *  ANDREI AUTO TRANS – Main JS (Optimized & Fixed)
@@ -18,6 +19,7 @@ function buildWaLink(message = DEFAULT_MESSAGE) {
 }
 
 function setAllWaLinks() {
+  // Every CTA button that should auto-sync the WhatsApp number / message
   const waIds = ["hero-wa", "footer-wa", "floating-wa", "ruk-wa", "ukr-wa"];
   waIds.forEach((id) => {
     const el = document.getElementById(id);
@@ -30,18 +32,23 @@ function setAllWaLinks() {
 ----------------------------- */
 function initSmoothScroll() {
   const header = document.querySelector(".site-header");
-  if (!header) return;
-  const headerOffset = header.offsetHeight;
+  const headerOffset = header ? header.offsetHeight : 0;
 
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
     link.addEventListener("click", (e) => {
       const targetId = link.getAttribute("href").slice(1);
+      if (!targetId) return;
       const target = document.getElementById(targetId);
       if (target) {
         e.preventDefault();
         const top = target.getBoundingClientRect().top + window.scrollY - (headerOffset + 10);
         window.scrollTo({ top, behavior: "smooth" });
-        document.querySelector(".nav")?.classList.remove("open");
+
+        // close mobile nav after click
+        const nav = document.querySelector(".nav");
+        if (nav && nav.classList.contains("open")) {
+          nav.classList.remove("open");
+        }
       }
     });
   });
@@ -63,7 +70,7 @@ function initMobileNav() {
 ----------------------------- */
 function addTiles(map) {
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; OpenStreetMap contributors',
+    attribution: "&copy; OpenStreetMap contributors",
   }).addTo(map);
 }
 
@@ -100,6 +107,7 @@ function createRoutedMap(elId, stops, bounds) {
     show: false,
   }).addTo(map);
 
+  // graceful fallback if routing fails
   control.on("routingerror", () => {
     L.polyline(waypoints, { color: "#2370ff", weight: 4, dashArray: "6,6" }).addTo(map);
   });
@@ -120,7 +128,7 @@ const roStops = [
   { name: "Cluj-Napoca", lat: 46.771, lng: 23.624 },
   { name: "Huedin", lat: 46.869, lng: 23.024 },
   { name: "Aleșd", lat: 47.05, lng: 22.414 },
-  { name: "Oradea", lat: 47.047, lng: 21.918 },
+  { name: "Oradea", lat: 47.047, lng: 21.918 }
 ];
 
 const ukStops = [
@@ -131,7 +139,7 @@ const ukStops = [
   { name: "Northampton", lat: 52.241, lng: -0.895 },
   { name: "Birmingham", lat: 52.486, lng: -1.89 },
   { name: "Manchester", lat: 53.48, lng: -2.242 },
-  { name: "Liverpool", lat: 53.408, lng: -2.991 },
+  { name: "Liverpool", lat: 53.408, lng: -2.991 }
 ];
 
 const europeStops = [
@@ -142,11 +150,11 @@ const europeStops = [
   { name: "München", lat: 48.1351, lng: 11.582 },
   { name: "Strasbourg", lat: 48.5734, lng: 7.7521 },
   { name: "Lille", lat: 50.6292, lng: 3.0573 },
-  { name: "Londra", lat: 51.5074, lng: -0.1278 },
+  { name: "Londra", lat: 51.5074, lng: -0.1278 }
 ];
 
 /* -----------------------------
-   Init Maps (Fixed)
+   Init Maps (guarded for pages without Leaflet)
 ----------------------------- */
 function initMaps() {
   if (typeof L === "undefined") return;
@@ -159,7 +167,7 @@ function initMaps() {
   window.mapUkReal = createRoutedMap("map-uk-real", ukStops, ukBounds);
   window.mapEurope = createRoutedMap("map-europe", europeStops, euBounds);
 
-  // 🔧 Fix for blank maps (redraw after load)
+  // Fix for blank maps (redraw after load)
   setTimeout(() => {
     [window.mapRoReal, window.mapUkReal, window.mapEurope].forEach((m) => {
       if (m && m.invalidateSize) m.invalidateSize();
@@ -207,6 +215,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initSmoothScroll();
   initMaps();
 
+  // Toggle expandable city lists (present on both homepage and subpage)
   initCityToggle("cityList", "toggleCities");
   initCityToggle("roCityList", "toggleRoCities");
 });
