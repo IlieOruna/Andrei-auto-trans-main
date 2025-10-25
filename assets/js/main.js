@@ -1,6 +1,6 @@
 /**
  * =========================================================
- *  ANDREI AUTO TRANS – Main JS (Optimized)
+ *  ANDREI AUTO TRANS – Main JS (Optimized & Fixed)
  *  Handles WhatsApp links, navigation, maps & UX
  * =========================================================
  */
@@ -75,7 +75,7 @@ function createRoutedMap(elId, stops, bounds) {
   addTiles(map);
   if (bounds) map.fitBounds(bounds);
 
-  // Add Markers
+  // Add markers
   stops.forEach((s, i) => {
     L.circleMarker([s.lat, s.lng], {
       radius: i === 0 || i === stops.length - 1 ? 6 : 5,
@@ -146,7 +146,7 @@ const europeStops = [
 ];
 
 /* -----------------------------
-   Init Maps
+   Init Maps (Fixed)
 ----------------------------- */
 function initMaps() {
   if (typeof L === "undefined") return;
@@ -155,21 +155,26 @@ function initMaps() {
   const ukBounds = [[49.8, -8.7], [60.9, 1.8]];
   const euBounds = [[44, -5], [53, 25]];
 
-  window.mapRo = createRoutedMap("map-ro-real", roStops, roBounds);
-  window.mapUk = createRoutedMap("map-uk-real", ukStops, ukBounds);
-  window.mapEu = createRoutedMap("map-europe", europeStops, euBounds);
+  window.mapRoReal = createRoutedMap("map-ro-real", roStops, roBounds);
+  window.mapUkReal = createRoutedMap("map-uk-real", ukStops, ukBounds);
+  window.mapEurope = createRoutedMap("map-europe", europeStops, euBounds);
+
+  // 🔧 Fix for blank maps (redraw after load)
+  setTimeout(() => {
+    [window.mapRoReal, window.mapUkReal, window.mapEurope].forEach((m) => {
+      if (m && m.invalidateSize) m.invalidateSize();
+    });
+  }, 800);
 }
 
 /* -----------------------------
-   City List Toggle + Filter
+   City List Toggle
 ----------------------------- */
 function initCityToggle(listId, buttonId) {
   const list = document.getElementById(listId);
   const btn = document.getElementById(buttonId);
   if (!list || !btn) return;
 
-<<<<<<< HEAD
-  // initial collapsed state
   let isCollapsed = list.getAttribute("data-collapsed") === "true";
 
   const updateState = () => {
@@ -190,88 +195,7 @@ function initCityToggle(listId, buttonId) {
     updateState();
   });
 
-  // initialize
   updateState();
-=======
-  const updateLabel = () => {
-    btn.textContent =
-      list.getAttribute("data-collapsed") === "true" ? "Arată mai multe" : "Arată mai puține";
-  };
-
-  btn.addEventListener("click", () => {
-    const collapsed = list.getAttribute("data-collapsed") !== "true";
-    list.setAttribute("data-collapsed", collapsed ? "true" : "false");
-    updateLabel();
-  });
-
-  updateLabel();
->>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
-}
-
-function initCityFilter(listId, inputId) {
-  const input = document.getElementById(inputId);
-  const list = document.getElementById(listId);
-  if (!input || !list) return;
-
-  const items = Array.from(list.querySelectorAll("li"));
-  input.addEventListener("input", () => {
-    const q = input.value.trim().toLowerCase();
-    list.setAttribute("data-collapsed", "false");
-<<<<<<< HEAD
-    list.style.maxHeight = "1000px";
-    list.style.overflow = "visible";
-=======
->>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
-    items.forEach((li) => {
-      li.style.display = li.textContent.toLowerCase().includes(q) ? "" : "none";
-    });
-  });
-}
-
-<<<<<<< HEAD
-/* === INIT on DOM Ready === */
-document.addEventListener("DOMContentLoaded", () => {
-  initCityToggle("roCityList", "toggleRoCities");
-  initCityToggle("cityList", "toggleCities");
-  // optional: if you have search inputs
-  // initCityFilter("roCityList", "roCitySearch");
-  // initCityFilter("cityList", "ukCitySearch");
-});
-
-=======
->>>>>>> f747c8f259c4679e7dfe00ae2da8eb6d3acacb97
-/* -----------------------------
-   📱 Map Scroll Lock (Touch Protection)
------------------------------ */
-function addMapLock(map) {
-  if (!map) return;
-  const mapContainer = map.getContainer();
-  const overlay = document.createElement("div");
-  overlay.className = "map-overlay";
-  overlay.textContent = "🔍 Atinge pentru a activa harta";
-  mapContainer.appendChild(overlay);
-
-  const disableInteractions = () => {
-    map.dragging.disable();
-    map.touchZoom.disable();
-    map.doubleClickZoom.disable();
-    map.scrollWheelZoom.disable();
-  };
-
-  disableInteractions();
-
-  overlay.addEventListener("click", () => {
-    overlay.classList.add("hidden");
-    map.dragging.enable();
-    map.touchZoom.enable();
-    map.doubleClickZoom.enable();
-
-    // Disable again after 4 seconds
-    setTimeout(() => {
-      overlay.classList.remove("hidden");
-      disableInteractions();
-    }, 4000);
-  });
 }
 
 /* -----------------------------
@@ -283,16 +207,6 @@ document.addEventListener("DOMContentLoaded", () => {
   initSmoothScroll();
   initMaps();
 
-  // City lists
   initCityToggle("cityList", "toggleCities");
   initCityToggle("roCityList", "toggleRoCities");
-  initCityFilter("cityList", "cityFilter");
-  initCityFilter("roCityList", "roCityFilter");
-
-  // Map lock
-  setTimeout(() => {
-    if (window.L) {
-      [window.mapRo, window.mapUk, window.mapEu].forEach(addMapLock);
-    }
-  }, 1500);
 });

@@ -483,18 +483,16 @@
   </section>
 
   <!-- Footer -->
-  <footer class="mini-footer">
-    <div class="container mini-footer__inner">
-      <div class="mini-footer__brand" aria-label="Andrei Auto Trans">ANDREI AUTO TRANS</div>
-      <div class="mini-footer__right">
-        <p class="mini-footer__copy">© <span data-year></span> Andrei Auto Trans. Toate drepturile rezervate.</p>
-        <p class="mini-footer__links">
-          <a href="privacy.html">Politica de Confidențialitate</a>
-          <a href="/transport-romania-anglia.html">Transport persoane România – Anglia</a>
-        </p>
-      </div>
-    </div>
-  </footer>
+<footer class="mini-footer">
+  <div class="container mini-footer__inner">
+    <p class="mini-footer__copy">© <span data-year></span> Andrei Auto Trans. Toate drepturile rezervate.</p>
+    <p class="mini-footer__links">
+      <a href="privacy.html">Politica de Confidențialitate</a>
+      <a href="/transport-romania-anglia.html">Transport persoane România – Anglia</a>
+    </p>
+  </div>
+</footer>
+
 
   <!-- Floating WhatsApp -->
   <div class="floating-wa" aria-live="polite">
@@ -522,3 +520,16 @@
   </script>
 </body>
 </html>
+<script>
+window.addEventListener("load", () => {
+  // Delay ensures layout is fully visible before redraw
+  setTimeout(() => {
+    if (typeof L !== "undefined") {
+      // Redraw all initialized maps if they exist
+      if (window.mapRoReal && window.mapRoReal.invalidateSize) mapRoReal.invalidateSize();
+      if (window.mapUkReal && window.mapUkReal.invalidateSize) mapUkReal.invalidateSize();
+      if (window.mapEurope && window.mapEurope.invalidateSize) mapEurope.invalidateSize();
+    }
+  }, 600);
+});
+</script>
