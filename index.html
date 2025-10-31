@@ -188,23 +188,16 @@
   <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js" defer></script>
   <script src="assets/js/main.js" defer></script>
 
-  <!-- ===================== GOOGLE ANALYTICS (GA4) ===================== -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SYF9CZBZPZ"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-SYF9CZBZPZ');
-
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=AW-633978086">
-</script>
+ <!-- Google tag (gtag.js) – single loader for GA4 + Google Ads -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-SYF9C2BZP2"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
+  gtag('config', 'G-SYF9C2BZP2');   // GA4
+  gtag('config', 'AW-633978086');   // Google Ads (must match your installed Ads ID)
+</script>
 
-  gtag('config', 'AW-633978086');
 </script>
   </script>
 </head>
