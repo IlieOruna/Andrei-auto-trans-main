@@ -221,7 +221,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 // --- Google Ads conversion tracking for site clicks (WhatsApp + Phone) ---
 (function () {
-  const ADS_ID = 'AW-633970886';
+  const ADS_ID = 'AW-633978086';
   // <- Replace these with the EXACT labels Google showed you when you created
   // the two Website conversions (the part after the slash in send_to).
   const LABEL_WHATSAPP = 'PASTE_WHATSAPP_LABEL_HERE';
