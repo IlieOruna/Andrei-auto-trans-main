@@ -219,3 +219,58 @@ document.addEventListener("DOMContentLoaded", () => {
   initCityToggle("cityList", "toggleCities");
   initCityToggle("roCityList", "toggleRoCities");
 });
+// --- Google Ads conversion tracking for site clicks (WhatsApp + Phone) ---
+(function () {
+  const ADS_ID = 'AW-633970886';
+  // <- Replace these with the EXACT labels Google showed you when you created
+  // the two Website conversions (the part after the slash in send_to).
+  const LABEL_WHATSAPP = 'PASTE_WHATSAPP_LABEL_HERE';
+  const LABEL_PHONE   = 'PASTE_PHONE_LABEL_HERE';
+
+  function sendConversion(label, href, newTab, ev) {
+    if (typeof gtag !== 'function') return;
+
+    // New tab (WhatsApp usually): no delay needed.
+    if (newTab) {
+      gtag('event', 'conversion', { send_to: ADS_ID + '/' + label });
+      return;
+    }
+
+    // Same tab (tel: links): delay briefly so the hit is sent.
+    if (ev) ev.preventDefault();
+    let done = false;
+
+    gtag('event', 'conversion', {
+      send_to: ADS_ID + '/' + label,
+      event_callback: function () {
+        done = true;
+        window.location.href = href;
+      }
+    });
+
+    setTimeout(function () {
+      if (!done) window.location.href = href;
+    }, 400);
+  }
+
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest('a[href]');
+    if (!a) return;
+
+    const href   = a.getAttribute('href') || '';
+    const newTab = (a.getAttribute('target') === '_blank');
+
+    // WhatsApp click
+    if (href.includes('wa.me/40757283580')) {
+      sendConversion(LABEL_WHATSAPP, href, newTab, e);
+      return;
+    }
+
+    // Phone click
+    if (href.startsWith('tel:+40757283580') || href.startsWith('tel:0757283580')) {
+      sendConversion(LABEL_PHONE, href, false, e);
+      return;
+    }
+  });
+})();
+
